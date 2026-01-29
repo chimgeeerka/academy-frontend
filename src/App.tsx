@@ -5,6 +5,10 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [isToggled, setIsToggled] = useState(false);
+  const handleClick = () => {
+    setIsToggled((prevIsToggled) => !prevIsToggled);
+  };
 
   return (
     <>
@@ -16,11 +20,31 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1>{count}</h1>
+
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <button onClick={() => setCount((count) => count - 1)}>
+       -
         </button>
+     
+     <button onClick={() => setCount(0)}>
+          Reset
+        </button>
+
+        <button onClick={() => setCount((count) => count + 1)}>
+    +
+      </button>
+     
+      
+      
+      {/* Daalgawar 3 useState bolon Conditional rendering ashiglah */}
+       
+        <button onClick={handleClick}>
+          {isToggled ? " 🙈 Hide Secret" : "🙈 Reveal Secret"}
+           </button>
+{isToggled && <p> ✨ React is awesome! ✨ </p>}
+
+
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
